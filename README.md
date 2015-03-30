@@ -27,7 +27,7 @@
 </ul>
 <h4>Fundemental Architecture</h4>
 <dl>
-	<h3>toolTip/site/</h3>
+	<dt>toolTip/site/</dt>
 	<dd>html resources</dd>
 	<dt>styles</dt>
 	<dd>CSS resources</dd>
