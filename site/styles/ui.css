@@ -1,0 +1,50 @@
+.tooltip{
+    outline:none;
+    text-decoration:none;
+    border-bottom:dotted 1px blue;
+    position:relative;
+}
+a.tooltip > span {
+    color:#000000; 
+    font-family:Arial;
+    font-size:12px;
+    font-style:normal;	
+    margin-top:0;
+    margin-left:0;
+	border:1px solid #CCCCFF;	         
+	border-radius:3px;    
+	padding:10px 20px;
+	width:300px;
+    opacity:1.0;
+    visibility:visible;
+    position:absolute;
+    z-index:10;
+    box-shadow:2px 2px 2px #999;
+	background:#CCCCFF;
+	background:-webkit-linear-gradient(top, #CCCCFF, #FFFFFF);
+	background:linear-gradient(top, #CCCCFF, #FFFFFF);	    
+}
+.tooltipArrow{
+    margin-left:40px;
+    margin-top:-19px;
+ 	border-top:1px solid #CCCCFF;
+	border-right:1px solid #CCCCFF;       
+   	width:15px;
+    height:15px;
+	box-shadow:inset 0 1px 0 #fff;
+	background:#CCCCFF;
+    display:block;
+    position:absolute;
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+    -webkit-box-shadow:inset -1px 1px 0 #fff;
+    -moz-box-shadow:inset 0 1px 0 #fff;
+    -o-box-shadow:inset 0 1px 0 #fff;
+    /*display: none\0/;
+    *display: none;*/	
+}
+.hide{
+	display:none;
+} 
