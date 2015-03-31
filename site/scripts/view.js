@@ -46,10 +46,10 @@ jvm.view = (function(w, d, $){
 
 		this.delayTimeout = null;
 		this.delay = 1500;
-		this.text = paramText;
+		this.text = paramText; /* TODO: remove text instance variable, should be an array set during this.show */
 		/* @const {string} */
 		var deleteThis = 'Hello World';
-		this.element = d.createElement('div');
+		this.element = d.createElement('div'); /* button container */
 
 		// append tooltip using jvm.ui
 		var nodeExist = d.getElementsByTagName('body')[0];
@@ -57,8 +57,13 @@ jvm.view = (function(w, d, $){
 	Tooltip.prototype = {        		
 		startDelay:function(e, text){
 
+			
+
+
+
 			if(this.delayTimeout == null){
 				var that = e.data;
+				that.text = e.target.getAttribute('value');
 				var offset = $(this).offset();
 				var x = e.pageX - offset.left;
 				var y = e.pageY - offset.top;
@@ -68,6 +73,9 @@ jvm.view = (function(w, d, $){
 				}, this.delay);
 			}
 		},
+		setText:function(){
+
+		},
 		show:function(x, y, paramText){
 			w.clearTimeout(this.delayTimeout);
 			this.delayTimeout = null;
@@ -75,6 +83,8 @@ jvm.view = (function(w, d, $){
 			var strY = y + 'px; ';
 			var frag = new jvm.ui.dom.createToolTip({text:paramText});
 			var nodeExist = d.getElementsByTagName('body')[0];
+
+
 			this.element.appendChild(frag);
 			nodeExist.appendChild(this.element);
 			this.element.setAttribute('class', 'show');
@@ -109,9 +119,9 @@ jvm.view = (function(w, d, $){
 	var main = function(){
 
 		var objToolTip = new Tooltip('Hello Universe');
-		var $nodeExist = $('#container');
-		dom.setListener({$node:$nodeExist, event:'mouseover', data:objToolTip, listener:objToolTip.startDelay});
-		dom.setListener({$node:$nodeExist, event:'mouseout', data:objToolTip, listener:objToolTip.hide});
+		var $nodesExist = $('.tooltip');
+		dom.setListener({$node:$nodesExist, event:'mouseover', data:objToolTip, listener:objToolTip.startDelay});
+		dom.setListener({$node:$nodesExist, event:'mouseout', data:objToolTip, listener:objToolTip.hide});
 	};
 
 	var lclInterval = w.setInterval(function(){
