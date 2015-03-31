@@ -1,5 +1,37 @@
+/* From general to specic */
+div, form, p, fieldset{
+	box-sizing:border-box; /* ensure width = width + padding */
+	padding:1%;
+}
+fieldset{
+	border:0;
+}
+input[type=button]{
+	color:#CCCCCC;
+	letter-spacing:0.1em;
+	width:160px;
+	background-color:#2A2B2E;	
+	margin:5px 0;
+	border-radius:5px;
+	border:solid 3px #2A2B2E;
+	-moz-box-shadow:5px 3px 4px #818284;
+	-webkit-box-shadow:5px 3px 4px #818284;
+	box-shadow:5px 3px 4px #818284;		
+	cursor:pointer;
+}
+input[type=button]:hover{
+	color:#FFFFFF;
+}
+.block, .blockElements *{
+	display:block;
+}
 .container{
 	width:300px;
 	height:200px;
 	background-color:#CCCCCC;
+	margin:auto;
+	border-radius:10px;
+	-moz-box-shadow: 9px 10px 5px #2a2b2e;
+	-webkit-box-shadow: 9px 10px 5px #2a2b2e;
+	box-shadow: 9px 10px 5px #2a2b2e;	
 }
