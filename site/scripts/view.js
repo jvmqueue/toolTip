@@ -20,7 +20,14 @@ jvm.view = (function(w, d, $){
 	 */        
 		setListener:function(options){			
 			options.$node.on(options.event, options.data, options.listener);
-		}
+		},
+
+
+		getMousePosition:function(){
+
+
+
+		} // End getMousePositionz
 	};
 
  /**
@@ -58,29 +65,28 @@ jvm.view = (function(w, d, $){
 		startDelay:function(e, text){
 
 			
-
-
-
 			if(this.delayTimeout == null){
 				var that = e.data;
 				that.text = e.target.getAttribute('value');
 				var offset = $(this).offset();
-				var x = e.pageX - offset.left;
-				var y = e.pageY - offset.top;
+			
+
+				var x = e.target.parentNode.offsetLeft + e.target.scrollLeft;
+				var y = e.target.offsetTop - e.target.scrollTop;
 				
 				this.delayTimeout = w.setTimeout(function(){
-					that.show(x, y, that.text);
+					that.show(x, y, that.text, e);
 				}, this.delay);
 			}
 		},
-		setText:function(){
-
-		},
-		show:function(x, y, paramText){
+		show:function(x, y, paramText, paramEvent){
 			w.clearTimeout(this.delayTimeout);
 			this.delayTimeout = null;
-			var strX = x + 'px; ';
-			var strY = y + 'px; ';
+			var event = paramEvent;
+			var strX = event.screenX + 'px; ';
+			var strY = (event.screenY - 65) + 'px; ';
+
+
 			var frag = new jvm.ui.dom.createToolTip({text:paramText});
 			var nodeExist = d.getElementsByTagName('body')[0];
 
@@ -88,7 +94,7 @@ jvm.view = (function(w, d, $){
 			this.element.appendChild(frag);
 			nodeExist.appendChild(this.element);
 			this.element.setAttribute('class', 'show');
-			this.element.setAttribute('style', 'position:absolute; top:' + strY + 'left' + strX  );
+			this.element.setAttribute('style', 'position:absolute; top:' + strY + 'left:' + strX  );
 		},
 		hide:function(e){
 			var that = e.data;
