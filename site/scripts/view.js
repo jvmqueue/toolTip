@@ -23,10 +23,11 @@ jvm.view = (function(w, d, $){
 		},
 
 
-		getMousePosition:function(){
-
-
-
+		getMousePosition:function(paramNode){
+			var nodeTarget = paramNode;
+			var x = nodeTarget.parentNode.offsetLeft + nodeTarget.scrollLeft;
+			var y = nodeTarget.offsetTop - nodeTarget.scrollTop;
+			return{ordinate:x, absissa:y};
 		} // End getMousePositionz
 	};
 
@@ -64,15 +65,17 @@ jvm.view = (function(w, d, $){
 	Tooltip.prototype = {        		
 		startDelay:function(e, text){
 
+			var target = e.target;
 			
-			if(this.delayTimeout == null){
+			if(this.delayTimeout == null){  // TODO: what is the purpose of this condition
 				var that = e.data;
 				that.text = e.target.getAttribute('value');
 				var offset = $(this).offset();
 			
+				var coordinates = dom.getMousePosition(target);
+				var x = coordinates,ordinate;
+				var y = coordinates.absissa;
 
-				var x = e.target.parentNode.offsetLeft + e.target.scrollLeft;
-				var y = e.target.offsetTop - e.target.scrollTop;
 				
 				this.delayTimeout = w.setTimeout(function(){
 					that.show(x, y, that.text, e);
