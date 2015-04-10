@@ -25,21 +25,24 @@
 	<li>Grunt for CSS lint, JS Lint, and jsDoc</li>
 </ul>
 </ul>
-<h4>Fundemental Architecture</h4>
-<dl>
-	<dt>toolTip/site/</dt>
-	<dd>html resources</dd>
-	<dt>styles</dt>
-	<dd>CSS resources</dd>
-	<dt>scripts</dt>
-	<dd>JS resources</dd>
-	<dd>base/jquery-1.11.2.js</dd>	
-	<dt>images</dt>
-	<dd>background images</dd>
-</dl>
+<h4>Architecture</h4>
+<div>
+	<pre>
+		<code>
+			├── site
+			│   ├── html resources
+			│   ├── styles
+			│   │   └── CSS resources
+			│   ├── scripts
+			│   │     └── JS resources
+			│   │     └── base
+			│   │         └── jquery-1.11.2.js
+			│   ├── images
+			│   │     └── resources
+			│   │
+		</code>
+	</pre>
+</div>
 
-
-
- 
 
  
